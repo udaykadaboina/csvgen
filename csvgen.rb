@@ -15,8 +15,9 @@ class Csvgen
                 @my_interval = rand(9)
             #    puts "random num: is #{@my_interval}"
             #    puts "next num will be generated in #{@my_interval} seconds" 
-                @tcurrent += @my_interval               
-                puts "#{[ 3, 5 , 11, 13, 22, 23, 99, 10, 12, 8 ].sample} has #{[:won, :lost].sample} 50-50 at #{@tcurrent}"
+                @tcurrent += @my_interval
+                mm, ss = @tcurrent.divmod(60)              
+                puts "#{[ 3, 5 , 11, 13, 22, 23, 99, 10, 12, 8 ].sample} has #{[:won, :lost].sample} 50-50 at #{mm}:#{ss}"
                 sleep @my_interval
             end
         end
