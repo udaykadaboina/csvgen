@@ -1,4 +1,6 @@
+require 'CSV'
 class Csvgen
+
     def intialize
         @my_interval
         @jersey_rand
@@ -10,6 +12,8 @@ class Csvgen
 #include Threads
     def start
         @tcurrent = 0
+
+        
         t = Thread.new do
             while true do
                 @my_interval = rand(9)
@@ -23,11 +27,14 @@ class Csvgen
                 puts "#{@jersey_rand} has #{@win_lose} 50-50 at #{mm}:#{ss}"
                 puts a
                 # => Feed a into CSV file now!
-                
+                CSV.open("events_list.csv", "wb") do |csv| 
+                 csv << a
+                end
 
                 sleep @my_interval
             end
-        end
+            
+        end 
     end
     
 end
