@@ -1,7 +1,7 @@
 class Csvgen
     def intialize
         @my_interval
-        @jersey_rand = [ 3, 5 , 11, 13, 22, 23, 99, 10, 12, 8 ]
+        @jersey_rand
         @win_lose
         @tcurrent
     
@@ -16,8 +16,15 @@ class Csvgen
             #    puts "random num: is #{@my_interval}"
             #    puts "next num will be generated in #{@my_interval} seconds" 
                 @tcurrent += @my_interval
-                mm, ss = @tcurrent.divmod(60)              
-                puts "#{[ 3, 5 , 11, 13, 22, 23, 99, 10, 12, 8 ].sample} has #{[:won, :lost].sample} 50-50 at #{mm}:#{ss}"
+                mm, ss = @tcurrent.divmod(60)  
+                @jersey_rand = [ 3, 5 , 11, 13, 22, 23, 99, 10, 12, 8 ].sample # generates the random jersey number
+                @win_lose = [:won, :lost].sample 
+                a = [@jersey_rand, @win_lose, "#{mm}:#{ss}"] # this array is fed to CSV file
+                puts "#{@jersey_rand} has #{@win_lose} 50-50 at #{mm}:#{ss}"
+                puts a
+                # => Feed a into CSV file now!
+                
+
                 sleep @my_interval
             end
         end
