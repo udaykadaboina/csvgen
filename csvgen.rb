@@ -15,6 +15,7 @@ class Csvgen
 
         
         t = Thread.new do
+            CSV.open("events_list.csv", "wb") do |csv| 
             while true do
                 @my_interval = rand(9)
             #    puts "random num: is #{@my_interval}"
@@ -27,7 +28,7 @@ class Csvgen
                 puts "#{@jersey_rand} has #{@win_lose} 50-50 at #{mm}:#{ss}"
                 puts a
                 # => Feed a into CSV file now!
-                CSV.open("events_list.csv", "wb") do |csv| 
+                
                  csv << a
                 end
 
